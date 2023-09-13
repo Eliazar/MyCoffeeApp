@@ -1,22 +1,27 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MyAwesomeApp.Views.CoffeeEquipmentPage">
+             xmlns:viewmodel="clr-namespace:MyAwesomeApp.ViewModels"
+             x:Class="MyAwesomeApp.Views.CoffeeEquipmentPage"
+             x:DataType="viewmodel:CoffeeEquipmentViewModel">
+    <ContentPage.BindingContext>
+        <viewmodel:CoffeeEquipmentViewModel />
+    </ContentPage.BindingContext>
     <ContentPage.Content>
         <Grid RowDefinitions="*,Auto,Auto,*">
+            
             <Label
-                x:Name="LabelCount"
                 Grid.Row="1"
                 HorizontalOptions="Center"
                 FontSize="Large"
-                Text="Welcome to Xamarin.Forms!" />
+                Text="{Binding CountDisplay}"/>
 
             <Button
-                x:Name="ButtonClick"
                 Grid.Row="2"
                 Text="Click me"
-                Clicked="ButtonClick_Clicked">
+                Command="{Binding IncreaseCount}">
             </Button>
+            
         </Grid>
     </ContentPage.Content>
 </ContentPage>
